@@ -661,11 +661,11 @@ class Message:
     def reply(self, reply_text: str = "", preview_url: bool = True) -> dict:
         if self.data == {}:
             return {"error": "No data provided"}
-        author = self.instance.get_author(self.data)
+        #author = self.instance.get_author(self.data)
         payload = {
             "messaging_product": "whatsapp",
             "recipient_type": "individual",
-            "to": str(author),
+            "to": self.to,
             "type": "text",
             "context": {"message_id": self.id},
             "text": {"preview_url": preview_url, "body": reply_text},
