@@ -673,9 +673,9 @@ class Message:
         logging.info(f"Replying to {self.id}")
         r = requests.post(self.url, headers=self.headers, json=payload)
         if r.status_code == 200:
-            logging.info(f"Message sent to {self.instance.get_author(self.data)}")
+            logging.info(f"Message sent to {self.to}")
             return r.json()
-        logging.info(f"Message not sent to {self.instance.get_author(self.data)}")
+        logging.info(f"Message not sent to {self.to}")
         logging.info(f"Status code: {r.status_code}")
         logging.error(f"Response: {r.json()}")
         return r.json()
